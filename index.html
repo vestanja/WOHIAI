@@ -65,14 +65,15 @@ function moveSnake() {
             snake.pop();
         }
 
-       
+
 
 function gameLoop() {
-        setInterval (gameLoop, 200);
-}
-        
+        moveSnake();
+        drawGame();
+}       
 
-        moveSnake, 100;
+setInterval (gameLoop, 200);
+
   // ===================================
         // BUILD THE GAME FROM HERE
         // ===================================
