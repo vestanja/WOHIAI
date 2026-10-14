@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Snake Game</title>
     <style>
         canvas {
@@ -15,6 +16,8 @@
     <h1>Snake</h1>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
     <p id="info"></p>
+    <p id="gameOverMessage"></p>
+    <button id="restartButton">Restart</button>
 
     <script>
         // ===== GAME SETUP =====
@@ -65,7 +68,7 @@ function moveSnake() {
             if (snake.some(segment => segment.x === head.x && segment.y === head.y) ||
              head.x <0 || head.x>=tileCount || head.y<0 || head.y >=tileCount){
                 // Game over
-                alert("Game Over! Score: " + score);
+                document.getElementById("gameOverMessage").innerText = "Game Over! Score: " + score;
                 gameOver = true;
                 return;
             }
@@ -103,6 +106,18 @@ function moveSnake() {
             }
         });
 
+        document.getElementById("restartButton").addEventListener("click", () => {
+            snake =[
+                { x: 10, y: 10 },
+                { x: 9, y: 10 },
+                { x: 8, y: 10 }
+            ];
+            food = { x: 15, y: 15 };
+            direction = { x: 1, y: 0 };
+            score = 0;
+            gameOver = false;
+            document.getElementById("gameOverMessage").innerText = "";
+        }); 
 
 function gameLoop() {
         if (gameOver) return;
@@ -115,7 +130,6 @@ setInterval (gameLoop, 200);
 
   
 
-        // Step 5: Improvements
         
         
 
