@@ -66,6 +66,27 @@ function moveSnake() {
         }
 
 
+        document.addEventListener("keydown", (event) => {
+            let newDirection = null;
+            switch (event.key) {
+                case "ArrowUp":
+                    newDirection = { x: 0, y: -1 };
+                    break;
+                case "ArrowDown":
+                    newDirection = { x: 0, y: 1 };
+                    break;
+                case "ArrowLeft":
+                    newDirection = { x: -1, y: 0 };
+                    break;
+                case "ArrowRight":
+                    newDirection = { x: 1, y: 0 };
+                    break;
+            }
+            if (newDirection.x !== -direction.x || newDirection.y !== -direction.y) {
+                direction = newDirection;
+            }
+        });
+
 
 function gameLoop() {
         moveSnake();
@@ -74,15 +95,7 @@ function gameLoop() {
 
 setInterval (gameLoop, 200);
 
-  // ===================================
-        // BUILD THE GAME FROM HERE
-        // ===================================
-        //
-        // Use your custom agent in VS Code Chat 
-        // to guide your work through each step. 
-        // Commit regularly.
-        //
-        // Step 1: Movement (game loop)
+  
         // Step 2: Keyboard controls
         // Step 3: Eating and growing
         // Step 4: Game over
