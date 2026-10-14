@@ -33,6 +33,7 @@
         let direction = { x: 1, y: 0 };
         let food = { x: 15, y: 15 };
         let score = 0;
+        let gameOver = false;
 
         // ===== DRAWING =====
         const drawGame = () => {
@@ -65,6 +66,7 @@ function moveSnake() {
              head.x <0 || head.x>=tileCount || head.y<0 || head.y >=tileCount){
                 // Game over
                 alert("Game Over! Score: " + score);
+                gameOver = true;
                 return;
             }
             snake.unshift(head);
@@ -103,6 +105,7 @@ function moveSnake() {
 
 
 function gameLoop() {
+        if (gameOver) return;
         moveSnake();
         drawGame();
         document.getElementById("info").innerText = "Score: " + score;
@@ -111,11 +114,10 @@ function gameLoop() {
 setInterval (gameLoop, 200);
 
   
-        // Step 3: Eating and growing
-        // Step 4: Game over
+
         // Step 5: Improvements
-        //
-        // ===================================
+        
+        
 
     </script>
 
